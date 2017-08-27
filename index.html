@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Adventures in Space</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono:700" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <style>
+        #text {
+            display: inline-block;
+            width: 20%;
+            word-wrap: break-word;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        
+        #blog_header {
+            font-size: 1.5em;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        #image {
+            display: inline-block;
+            width: 20em;
+            position: static;
+            height: 20em;
+            margin-top: 1em;
+        }
+        
+        #map {
+            height: 80vh;
+            width: 78%;
+            display: inline-block;
+            float: right;
+        }
+        
+        #title {
+            font-family: 'Rubik Mono One', sans-serif;
+            font-size: 3em;
+            word-spacing: .3em;
+            letter-spacing: .1em;
+        }
+
+    </style>
+
+    <div id="header">
+
+        <h1 id="title"> The well traveled dork</h1>
+    </div>
+
+    <div id="blog">
+        <div id="text">
+            <h1> </h1>
+            <div id="link"> </div>
+        </div>
+        <div id="map"> </div>
+    </div>
+
+
+    <script>
+        var map = L.map('map').setView([0, 0], 2);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: 'mapbox.pencil'
+        }).addTo(map);
+
+
+        function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+        }
+
+
+
+        var geojsonFeature = {
+            "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Willard Library",
+                        "popupContent": "Willard Library",
+                        "description": "Cool library, possilby haunted",
+                        "url": "http://www.willard.lib.in.us/",
+                        "img": "IMG_20170702_141629.jpg",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.574256, 37.978261]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Alexandria Dendropark",
+                        "popupContent": "Alexandria Dendropark- best park ever",
+                        "description": "Insanely good looking park in Ukraine",
+                        "url": "http://www.alexandria-park.com.ua/",
+                        "img": "https://c1.staticflickr.com/5/4124/5175622325_a9130153e5_b.jpg",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [30.065208, 49.813085]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "City Museum",
+                        "popupContent": "Crazy Playground for adults and kids!",
+                        "description": "This chimera is a mix between modern art and a McDonalds play area. ",
+                        "url": "https://www.citymuseum.org/",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/City_Museum_outdoor_structures.jpg/1200px-City_Museum_outdoor_structures.jpg",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-90.200551, 38.633687]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Roofless Church",
+                        "popupContent": "The Roofless Church",
+                        "description": "New Harmony was home to two attempted uptopian communties and this funky building.",
+                        "url": "http://robertleeblafferfoundation.org/",
+                        "img": "roofless_chruch.jpg",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-87.935718, 38.131856]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "La Recoleta Cemetery",
+                        "popupContent": "City of the dead and famous.",
+                        "description": "Looking for the rich and famous of Argentina, we'll look no further. Also a very good place to find stray cats",
+                        "url": "https://en.wikipedia.org/wiki/La_Recoleta_Cemetery",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Recoleta-tower-TM.jpg/1280px-Recoleta-tower-TM.jpg",
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-58.393056, -34.588056]
+                    }
+                }
+
+            ]
+        };
+
+
+        L.geoJSON(geojsonFeature, {
+            onEachFeature: onEachFeature
+        }).bindPopup(function(layer) {
+            return layer.feature.properties.popupContent
+        }).on('click', markerOnClick).addTo(map);
+
+
+        function markerOnClick(e) {
+            document.getElementById("text").innerHTML = '<div id="blog_header">' +
+                e.layer.feature.properties.name + "</div>" + "<div>" + e.layer.feature.properties.description + "</div>" + " " + ' <a href=' + e.layer.feature.properties.url + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div>"
+        }
+
+    </script>
+
+</body>
+
+</html>
