@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Adventures in Space</title>
+    <title>The Well Traveled Nerd</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,34 +21,26 @@
 
 
     <style>
-        #text {
-            display: inline-block;
-            width: 20%;
-            word-wrap: break-word;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1em;
-            margin-top: 1em;
-            margin-bottom: 1em;
+        * {
+            box-sizing: border-box;
         }
         
-        #blog_header {
-            font-size: 1.5em;
-            font-family: 'Roboto Mono', monospace;
+        
+        #blog {
+            width: 25%;
+            float: left;
         }
         
-        #image {
-            display: inline-block;
-            width: 20em;
-            position: static;
-            height: 20em;
-            margin-top: 1em;
+        #image{
+            width:90%;
+            height: auto
         }
         
         #map {
             height: 80vh;
-            width: 78%;
-            display: inline-block;
+            width: 75%;
             float: right;
+            padding: 15px;
         }
         
         #title {
@@ -65,13 +57,13 @@
         <h1 id="title"> The well traveled dork</h1>
     </div>
 
-    <div id="blog">
-        <div id="text">
-            <h1> </h1>
-            <div id="link"> </div>
-        </div>
-        <div id="map"> </div>
-    </div>
+
+    <div id="text"> </div>
+
+
+    <div id="map"> </div>
+
+
 
 
     <script>
@@ -175,8 +167,8 @@
 
 
         function markerOnClick(e) {
-            document.getElementById("text").innerHTML = '<div id="blog_header">' +
-                e.layer.feature.properties.name + "</div>" + "<div>" + e.layer.feature.properties.description + "</div>" + " " + ' <a href=' + e.layer.feature.properties.url + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div>"
+            document.getElementById("text").innerHTML = '<div id="blog" ><div id="blog_header">' +
+                e.layer.feature.properties.name + "</div>" + "<div>" + e.layer.feature.properties.description + "</div>" + " " + ' <a href=' + e.layer.feature.properties.url + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
         }
 
     </script>
