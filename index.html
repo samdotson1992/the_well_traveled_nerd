@@ -19,8 +19,6 @@
 <body>
 
     <style>
-        
-       
         * {
             box-sizing: border-box;
         }
@@ -33,10 +31,8 @@
         #blog {
             width: 25%;
             float: left;
-            
         }
         
-
         #link {
             display: margin-bottom: 1em;
             margin-top: 1em;
@@ -44,21 +40,18 @@
         
         #image {
             width: 90%;
-            
-        }
-
-        #text{
-          font-family: "Roboto mono" , monospace;
-             
         }
         
-        #blog_header{
-         font-size: 1.5em;
-           
+        #text {
+            font-family: "Roboto mono", monospace;
         }
-        #image{
-            width:90%;
-
+        
+        #blog_header {
+            font-size: 1.5em;
+        }
+        
+        #image {
+            width: 90%;
             height: auto
         }
         
@@ -205,8 +198,8 @@
 
             ]
         };
-   
-        
+
+
         L.geoJSON(geojsonFeature, {
             onEachFeature: onEachFeature
         }).bindPopup(function(layer) {
@@ -215,9 +208,9 @@
 
 
         function markerOnClick(e) {
-            map.setView([e.latlng.lat, e.latlng.lng],12);
+            map.setView([e.latlng.lat, e.latlng.lng], 12);
             document.getElementById("text").innerHTML = '<div id="blog" ><div id="blog_header">' +
-                e.layer.feature.properties.name + "</div>" + "<div>" + e.layer.feature.properties.description + "</div>" + " " + ' <a href=' + e.layer.feature.properties.url + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
+                e.layer.feature.properties.name + "</div>" + "<div id='post' >" + e.layer.feature.properties.description + " " + ' <a id="link" href=' + e.layer.feature.properties.url +"</div>" + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
         }
 
     </script>
