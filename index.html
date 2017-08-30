@@ -20,22 +20,7 @@
 
     <style>
         
-        a:link {
-            color: black;
-        }
-        /* visited link */
-        
-        /* mouse over link */
-        
-        a:hover {
-            color: dimgrey;
-        }
-        /* selected link */
-        
-        a:active {
-            color:darkslategrey;
-        }
-        
+       
         * {
             box-sizing: border-box;
         }
@@ -51,7 +36,7 @@
             
         }
         
-<<<<<<< HEAD
+
         #link {
             display: margin-bottom: 1em;
             margin-top: 1em;
@@ -59,7 +44,9 @@
         
         #image {
             width: 90%;
-=======
+            
+        }
+
         #text{
           font-family: "Roboto mono" , monospace;
              
@@ -71,7 +58,7 @@
         }
         #image{
             width:90%;
->>>>>>> origin/master
+
             height: auto
         }
         
@@ -218,7 +205,8 @@
 
             ]
         };
-
+   
+        
         L.geoJSON(geojsonFeature, {
             onEachFeature: onEachFeature
         }).bindPopup(function(layer) {
@@ -227,6 +215,7 @@
 
 
         function markerOnClick(e) {
+            map.setView([e.latlng.lat, e.latlng.lng],12);
             document.getElementById("text").innerHTML = '<div id="blog" ><div id="blog_header">' +
                 e.layer.feature.properties.name + "</div>" + "<div>" + e.layer.feature.properties.description + "</div>" + " " + ' <a href=' + e.layer.feature.properties.url + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
         }
