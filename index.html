@@ -19,10 +19,26 @@
 <body>
 
     <style>
+        
+        a:link {
+            color: black;
+        }
+        /* visited link */
+        
+        /* mouse over link */
+        
+        a:hover {
+            color: dimgrey;
+        }
+        /* selected link */
+        
+        a:active {
+            color:darkslategrey;
+        }
+        
         * {
             box-sizing: border-box;
         }
-        
         
         #blog_header {
             font-size: 1.5em;
@@ -34,8 +50,13 @@
             float: left;
         }
         
-        #image{
-            width:90%;
+        #link {
+            display: margin-bottom: 1em;
+            margin-top: 1em;
+        }
+        
+        #image {
+            width: 90%;
             height: auto
         }
         
@@ -52,14 +73,12 @@
             word-spacing: .3em;
             letter-spacing: .1em;
         }
-
-        #text{
-        font-family: 'Roboto Mono', monospace;
-        font-size: 1em;
-            
+        
+        #text {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1em;
         }
-        
-        
+
     </style>
 
     <div id="header">
@@ -163,10 +182,10 @@
                         "type": "Point",
                         "coordinates": [-58.393056, -34.588056]
                     }
-                
-                    
+
+
                 },
-                     {
+                {
                     "type": "Feature",
                     "properties": {
                         "name": "Las Americas market",
@@ -179,9 +198,9 @@
                         "type": "Point",
                         "coordinates": [-86.719001, 36.0673339]
                     }
-        
-                }     
-                
+
+                }
+
             ]
         };
 
