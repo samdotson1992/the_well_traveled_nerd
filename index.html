@@ -98,7 +98,8 @@
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
                 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            id: 'mapbox.pencil'
+            id: 'mapbox.pencil',
+         
         }).addTo(map);
 
 
@@ -207,10 +208,11 @@
         }).on('click', markerOnClick).addTo(map);
 
 
+
         function markerOnClick(e) {
             map.setView([e.latlng.lat, e.latlng.lng], 12);
             document.getElementById("text").innerHTML = '<div id="blog" ><div id="blog_header">' +
-                e.layer.feature.properties.name + "</div>" + "<div id='post' >" + e.layer.feature.properties.description + " " + ' <a id="link" href=' + e.layer.feature.properties.url +"</div>" + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
+                e.layer.feature.properties.name + "</div>" + "<div id='post' >" + e.layer.feature.properties.description + " " + ' <a id="link" href=' + e.layer.feature.properties.url + "</div>" + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
         }
 
     </script>
