@@ -13,7 +13,15 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+    <link rel="stylesheet" href="leaflet.defaultextent.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="Leaflet.defaultextent/src/leaflet.defaultextent.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="easy-button.css">
+    <script src="easy-button.js"></script>
+
+
 </head>
 
 <body>
@@ -73,6 +81,10 @@
             font-family: 'Roboto Mono', monospace;
             font-size: 1em;
         }
+        
+        .fa {
+            font-size: 2em;
+        }
 
     </style>
 
@@ -89,7 +101,6 @@
 
 
 
-
     <script>
         var map = L.map('map').setView([0, 0], 2);
 
@@ -99,16 +110,22 @@
                 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
             id: 'mapbox.pencil',
-         
         }).addTo(map);
 
 
+        L.easyButton('fa-home', function() {
+            map.setView([0, 0], 2);
+        }).addTo(map);
+
+
+ 
         function onEachFeature(feature, layer) {
             // does this feature have a property named popupContent?
             if (feature.properties && feature.properties.popupContent) {
                 layer.bindPopup(feature.properties.popupContent);
             }
         }
+
 
 
 
@@ -201,6 +218,7 @@
         };
 
 
+
         L.geoJSON(geojsonFeature, {
             onEachFeature: onEachFeature
         }).bindPopup(function(layer) {
@@ -212,7 +230,7 @@
         function markerOnClick(e) {
             map.setView([e.latlng.lat, e.latlng.lng], 12);
             document.getElementById("text").innerHTML = '<div id="blog" ><div id="blog_header">' +
-                e.layer.feature.properties.name + "</div>" + "<div id='post' >" + e.layer.feature.properties.description + " " + ' <a id="link" href=' + e.layer.feature.properties.url + "</div>" + '>' + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
+                e.layer.feature.properties.name + "</div>" + "<div id='post' >" + e.layer.feature.properties.description + " " + ' <a id="link" href=' + e.layer.feature.properties.url + "</div>"  + e.layer.feature.properties.name + '</a>' + '<div><img id="image" src=' + e.layer.feature.properties.img + "></div> </div>"
         }
 
     </script>
